@@ -3,6 +3,8 @@
 TODO: Insert proper README. In the meantime, here's the initial spec details
 from Emily and Graeme.
 
+Taken from: <https://docs.google.com/a/freeagent.com/document/d/1Ho_FSLegh7VxXFy7wykVy-S-ZQ5O5vTZb5DKo7QRiKc/edit?hl=en_US#>
+
 ## Emily's initial Spec
 
 ### Background
