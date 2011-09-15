@@ -1,5 +1,10 @@
 # Basic Cost Accounting
 
+## TODO List
+
+* I actually think this might be useful. Stick a Campaign Monitor on the home
+  page and on the sign up to capture email addresses for in the future.
+
 TODO: Insert proper README. In the meantime, here's the initial spec details
 from Emily and Graeme.
 
