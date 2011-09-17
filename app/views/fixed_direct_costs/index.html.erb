@@ -1,6 +1,11 @@
-<h1><%= @company.name %> &rarr; <%= @product.name %></h1>
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li><%= link_to @product.name, @product %> <span class="separator">/</span></li>
+  <li>Fixed direct costs</li>
+</ul>
 
-<h2>Fixed direct costs</h2>
+<h1><%= @product.name %> - Fixed direct costs</h1>
 
 <p>
   Your fixed direct costs are those where the cost is directly associated with
