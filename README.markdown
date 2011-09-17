@@ -80,10 +80,10 @@ modelled in, offhand, four different ways:
   level (eg if it costs £50 to produce 10 of these things, then it’ll cost
   £100 to produce 20 of them).
 
-* Stepped costs
+* Stepped costs (eg it'll cost £10 for the first 100 units, £20 for the next
+  100 units, etc).
 
-* Overhead + variable costs (bother, I can’t remember what this one is
-  called). (eg £10 setup plus £2/unit)
+* Semi-variable costs (eg £10 setup plus £2/unit)
 
 That’s all I’ve covered so far anyway. :)
 
