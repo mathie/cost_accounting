@@ -16,7 +16,7 @@
     <% @companies.each do |company| %>
       <%= content_tag_for :tr, company do %>
         <td><%= link_to company.name, company %></td>
-        <td>Foo, bar, baz.</td>
+        <td><%= (company.product_names.presence || ["No products yet."]).to_sentence %></td>
       <% end %>
     <% end %>
   </tbody>

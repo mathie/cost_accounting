@@ -1,0 +1,29 @@
+<h1><%= @company.name %> &rarr; <%= @product.name %></h1>
+
+<h2>Fixed direct costs</h2>
+
+<p>
+  Your fixed direct costs are those where the cost is directly associated with
+  the production of this product, but whose amount is fixed over the
+  production levels we are examining. For example, if you have to purchase a
+  piece of specialist machinery to produce this product, that would probably
+  count as a fixed cost.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product.fixed_direct_costs.each do |fixed_direct_cost| %>
+      <%= content_tag_for :tr, fixed_direct_cost do %>
+        <td><%= fixed_direct_cost.name %></td>
+        <td><%= number_to_currency fixed_direct_cost.fixed_cost_price %></td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

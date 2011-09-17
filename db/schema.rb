@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917144052) do
+ActiveRecord::Schema.define(:version => 20110917151118) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",       :null => false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(:version => 20110917144052) do
 
   add_index "companies", ["user_id", "name"], :name => "index_companies_on_user_id_and_name", :unique => true
   add_index "companies", ["user_id"], :name => "index_companies_on_user_id"
+
+  create_table "direct_costs", :force => true do |t|
+    t.string   "name",                                               :null => false
+    t.decimal  "fixed_cost_price",    :precision => 16, :scale => 8, :null => false
+    t.decimal  "variable_cost_price", :precision => 16, :scale => 8, :null => false
+    t.string   "type",                                               :null => false
+    t.integer  "product_id",                                         :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+  end
+
+  add_index "direct_costs", ["product_id", "name"], :name => "index_direct_costs_on_product_id_and_name", :unique => true
+  add_index "direct_costs", ["product_id"], :name => "index_direct_costs_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "name",                                          :null => false

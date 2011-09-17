@@ -1,0 +1,2 @@
+class VariableDirectCost < DirectCost
+end
