@@ -1,0 +1,15 @@
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li><%= link_to 'Products', company_products_path(@company) %> <span class="separator">/</span></li>
+  <li class="active"><%= link_to @product.name, @product %></li>
+</ul>
+
+<h1><%= @product.name %></h1>
+
+<ul class="tabs">
+  <li class="active"><%= link_to 'Overview', @product %></li>
+  <li><%= link_to 'Fixed direct costs', product_fixed_direct_costs_path(@product) %></li>
+</ul>
+
+<p>FIXME: Some sort of product overview goes here.</p>

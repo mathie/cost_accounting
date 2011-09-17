@@ -6,7 +6,12 @@
   <li class="active">Fixed direct costs</li>
 </ul>
 
-<h1><%= @product.name %> - Fixed direct costs</h1>
+<h1><%= @product.name %></h1>
+
+<ul class="tabs">
+  <li><%= link_to 'Overview', @product %></li>
+  <li class="active"><%= link_to 'Fixed direct costs', product_fixed_direct_costs_path(@product) %></li>
+</ul>
 
 <p>
   Your fixed direct costs are those where the cost is directly associated with

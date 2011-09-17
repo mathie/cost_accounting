@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.includes(:company).find(params[:id])
-    redirect_to product_fixed_direct_costs_path(@product)
+    @company = @product.company
   end
 
   def new
