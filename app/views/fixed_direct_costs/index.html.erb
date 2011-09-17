@@ -3,7 +3,7 @@
   <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
   <li><%= link_to 'Products', company_products_path(@company) %> <span class="separator">/</span></li>
   <li><%= link_to @product.name, @product %> <span class="separator">/</span></li>
-  <li class="active">Fixed direct costs</li>
+  <li class="active"><%= link_to 'Fixed direct costs', product_fixed_direct_costs_path(@product) %></li>
 </ul>
 
 <h1><%= @product.name %></h1>
@@ -11,6 +11,8 @@
 <ul class="tabs">
   <li><%= link_to 'Overview', @product %></li>
   <li class="active"><%= link_to 'Fixed direct costs', product_fixed_direct_costs_path(@product) %></li>
+  <li><%= link_to 'Variable direct costs', product_variable_direct_costs_path(@product) %></li>
+  <li><%= link_to 'Semi-variable direct costs', product_semi_variable_direct_costs_path(@product) %></li>
 </ul>
 
 <p>
@@ -26,19 +28,26 @@
   <%= link_to 'New fixed direct cost', new_product_fixed_direct_cost_path(@product), class: 'btn primary' %>
 </p>
 
-<table>
+<table class="zebra-striped">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Cost</th>
+      <th class="number">Cost</th>
     </tr>
   </thead>
+
+  <tfoot>
+    <tr>
+      <th>Total Cost</th>
+      <td class="number"><%= number_to_currency @product.fixed_direct_costs.sum(:fixed_cost_price) %></td>
+    </tr>
+  </tfoot>
 
   <tbody>
     <% @product.fixed_direct_costs.each do |fixed_direct_cost| %>
       <%= content_tag_for :tr, fixed_direct_cost do %>
         <td><%= fixed_direct_cost.name %></td>
-        <td><%= number_to_currency fixed_direct_cost.fixed_cost_price %></td>
+        <td class="number"><%= number_to_currency fixed_direct_cost.fixed_cost_price %></td>
       <% end %>
     <% end %>
   </tbody>

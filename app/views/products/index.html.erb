@@ -16,7 +16,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Net Sale Price</th>
+      <th class="number">Net Sale Price</th>
     </tr>
   </thead>
 
@@ -24,7 +24,7 @@
     <% @company.products.each do |product| %>
       <%= content_tag_for :tr, product do %>
         <td><%= link_to product.name, product %></td>
-        <td><%= number_to_currency product.net_sale_price %></td>
+        <td class="number"><%= number_to_currency product.net_sale_price %></td>
       <% end %>
     <% end %>
   </tbody>

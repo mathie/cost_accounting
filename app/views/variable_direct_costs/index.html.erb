@@ -1,0 +1,54 @@
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li><%= link_to 'Products', company_products_path(@company) %> <span class="separator">/</span></li>
+  <li><%= link_to @product.name, @product %> <span class="separator">/</span></li>
+  <li class="active"><%= link_to 'Variable direct costs', product_variable_direct_costs_path(@product) %></li>
+</ul>
+
+<h1><%= @product.name %></h1>
+
+<ul class="tabs">
+  <li><%= link_to 'Overview', @product %></li>
+  <li><%= link_to 'Fixed direct costs', product_fixed_direct_costs_path(@product) %></li>
+  <li class="active"><%= link_to 'Variable direct costs', product_variable_direct_costs_path(@product) %></li>
+  <li><%= link_to 'Semi-variable direct costs', product_semi_variable_direct_costs_path(@product) %></li>
+</ul>
+
+<p>
+  Your variable direct costs are those where the cost is directly associated
+  with the production of this product, and whose amount changes in direct
+  proportion to your production volume. For example, if you're buying in raw
+  materials to build your product, you know how much of each raw material you
+  use and how much that costs to buy, so you know the cost per unit for those
+  raw materials.
+</p>
+
+<p style="text-align:right">
+  <%= link_to 'New variable direct cost', new_product_variable_direct_cost_path(@product), class: 'btn primary' %>
+</p>
+
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="number">Cost per unit</th>
+    </tr>
+  </thead>
+
+  <tfoot>
+    <tr>
+      <th>Total Cost</th>
+      <td class="number"><%= number_to_currency @product.variable_direct_costs.sum(:variable_cost_price) %></td>
+    </tr>
+  </tfoot>
+
+  <tbody>
+    <% @product.variable_direct_costs.each do |variable_direct_cost| %>
+      <%= content_tag_for :tr, variable_direct_cost do %>
+        <td><%= variable_direct_cost.name %></td>
+        <td class="number"><%= number_to_currency variable_direct_cost.variable_cost_price %></td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
