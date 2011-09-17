@@ -3,7 +3,7 @@
   <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
   <li><%= link_to 'Products', company_products_path(@company) %> <span class="separator">/</span></li>
   <li><%= link_to @product.name, @product %> <span class="separator">/</span></li>
-  <li>Fixed direct costs</li>
+  <li class="active">Fixed direct costs</li>
 </ul>
 
 <h1><%= @product.name %> - Fixed direct costs</h1>
@@ -13,7 +13,12 @@
   the production of this product, but whose amount is fixed over the
   production levels we are examining. For example, if you have to purchase a
   piece of specialist machinery to produce this product, that would probably
-  count as a fixed cost.
+  count as a fixed cost. However, if your business is producing more than more
+  product, then your rent probably wouldn't could as a direct cost.
+</p>
+
+<p style="text-align:right">
+  <%= link_to 'New fixed direct cost', new_product_fixed_direct_cost_path(@product), class: 'btn primary' %>
 </p>
 
 <table>
