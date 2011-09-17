@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(:version => 20110917144052) do
     t.string   "name",                                          :null => false
     t.decimal  "net_sale_price", :precision => 16, :scale => 8, :null => false
     t.integer  "company_id",                                    :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
+  add_index "products", ["company_id", "name"], :name => "index_products_on_company_id_and_name", :unique => true
   add_index "products", ["company_id"], :name => "index_products_on_company_id"
 
   create_table "users", :force => true do |t|

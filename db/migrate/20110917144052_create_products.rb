@@ -5,9 +5,10 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal    :net_sale_price, null: false, precision: 16, scale: 8
       t.references :company,        null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :products, :company_id
+    add_index :products, [:company_id, :name], :unique => true
   end
 end
