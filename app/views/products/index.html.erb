@@ -1,9 +1,10 @@
 <ul class="breadcrumb">
   <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
-  <li><%= @company.name %></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li class="active">Products</li>
 </ul>
 
-<h1><%= @company.name %></h1>
+<h1><%= @company.name %> Products</h1>
 
 <h2>Products</h2>
 

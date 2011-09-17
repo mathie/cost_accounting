@@ -1,6 +1,7 @@
 <ul class="breadcrumb">
   <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
   <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li><%= link_to 'Products', company_products_path(@company) %> <span class="separator">/</span></li>
   <li><%= link_to @product.name, @product %> <span class="separator">/</span></li>
   <li>Fixed direct costs</li>
 </ul>

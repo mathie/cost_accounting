@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
-  before_filter :load_company!, :only => [ :new, :create ]
+  before_filter :load_company!, :only => [ :index, :new, :create ]
+
+  def index
+    @products = @company.products
+  end
 
   def show
     @product = Product.includes(:company).find(params[:id])
