@@ -3,6 +3,10 @@ class CompaniesController < ApplicationController
     @companies = current_user.companies.order(:name)
   end
 
+  def show
+    @company = current_user.companies.find(params[:id])
+  end
+
   def new
     @company = current_user.companies.new
   end

@@ -1,5 +1,7 @@
 CostAccounting::Application.routes.draw do
-  resources :companies
+  resources :companies do
+    resources :products
+  end
 
   devise_for :users
 

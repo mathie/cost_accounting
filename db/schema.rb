@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915154609) do
+ActiveRecord::Schema.define(:version => 20110917144052) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",       :null => false
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110915154609) do
 
   add_index "companies", ["user_id", "name"], :name => "index_companies_on_user_id_and_name", :unique => true
   add_index "companies", ["user_id"], :name => "index_companies_on_user_id"
+
+  create_table "products", :force => true do |t|
+    t.string   "name",                                          :null => false
+    t.decimal  "net_sale_price", :precision => 16, :scale => 8, :null => false
+    t.integer  "company_id",                                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["company_id"], :name => "index_products_on_company_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
