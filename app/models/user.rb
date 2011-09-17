@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   validates :name, presence: true
+
+  has_many :companies, dependent: :destroy, inverse_of: :user
 end
