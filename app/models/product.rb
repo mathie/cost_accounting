@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   has_many :direct_costs, inverse_of: :product, dependent: :destroy
   has_many :fixed_direct_costs
   has_many :variable_direct_costs
+  has_many :semi_variable_direct_costs
 
 
   validates :name, presence: true, uniqueness: { scope: :company_id }

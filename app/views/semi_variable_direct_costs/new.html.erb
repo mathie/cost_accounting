@@ -1,0 +1,21 @@
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li><%= link_to 'Products', company_products_path(@company) %> <span class="separator">/</span></li>
+  <li><%= link_to @product.name, @product %> <span class="separator">/</span></li>
+  <li><%= link_to 'Semi-variable direct costs', product_semi_variable_direct_costs_path(@product) %> <span class="separator">/</span></li>
+  <li class="active"><%= link_to 'New semi-variable direct cost', new_product_semi_variable_direct_cost_path(@product) %></li>
+</ul>
+
+<h1>New semi-variable direct cost</h1>
+
+<%= form_for [@product, @semi_variable_direct_cost] do |f| %>
+  <%= form_text_input f, :text_field, :name, autofocus: true, class: 'xlarge' %>
+  <%= form_text_input f, :text_field, :fixed_cost_price,    hint: "If you are able to reclaim sales tax on goods purchased, enter the net price here. If not, enter the gross price.", class: 'xlarge' %>
+  <%= form_text_input f, :text_field, :variable_cost_price, hint: "If you are able to reclaim sales tax on goods purchased, enter the net price here. If not, enter the gross price.", class: 'xlarge' %>
+
+  <div class="actions">
+    <%= f.submit "Create semi-variable direct cost", class: 'btn primary' %>
+    <%= link_to 'Cancel', product_semi_variable_direct_costs_path(@product), class: 'btn' %>
+  </div>
+<% end %>
