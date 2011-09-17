@@ -14,4 +14,19 @@
   <li><%= link_to 'Semi-variable direct costs', product_semi_variable_direct_costs_path(@product) %></li>
 </ul>
 
-<p>FIXME: Some sort of product overview goes here.</p>
+<table class="zebra-striped">
+  <tbody>
+    <tr>
+      <th>Total fixed direct costs</th>
+      <td class="number"><%= number_to_currency @product.total_fixed_direct_costs %></td>
+    </tr>
+    <tr>
+      <th>Total direct costs per unit</th>
+      <td class="number"><%= number_to_currency @product.total_variable_direct_costs %></td>
+    </tr>
+    <tr>
+      <th>Net sale price</th>
+      <td class="number"><%= number_to_currency @product.net_sale_price %></td>
+    </tr>
+  </tbody>
+</table>

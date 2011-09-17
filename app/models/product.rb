@@ -11,4 +11,12 @@ class Product < ActiveRecord::Base
   validates :net_sale_price, presence: true, numericality: { greater_than: 0 }
 
   attr_accessible :name, :net_sale_price
+
+  def total_fixed_direct_costs
+    direct_costs.sum(:fixed_cost_price)
+  end
+
+  def total_variable_direct_costs
+    direct_costs.sum(:variable_cost_price)
+  end
 end
