@@ -1,27 +1,9 @@
 <ul class="breadcrumb">
-  <li class="active">My Companies</li>
+  <li class="active"><%= link_to 'My Companies', companies_path %></li>
 </ul>
 
-<h1>My Companies</h1>
-
-<p style="text-align:right">
-  <%= link_to 'New Company', new_company_path, class: 'btn primary' %>
-</p>
-
-<table class="zebra-striped">
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Products</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
-      <%= content_tag_for :tr, company do %>
-        <td><%= link_to company.name, company %></td>
-        <td><%= (company.product_names.presence || ["No products yet."]).to_sentence %></td>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<% if @companies.present? %>
+  <%= render 'table', companies: @companies %>
+<% else %>
+  <%= render 'blank_slate' %>
+<% end %>

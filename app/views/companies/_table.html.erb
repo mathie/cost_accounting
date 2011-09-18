@@ -1,0 +1,27 @@
+<p style="float:right">
+  <%= link_to 'New Company', new_company_path, class: 'btn primary' %>
+</p>
+<%= render 'description' %>
+
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Products</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% companies.each do |company| %>
+      <%= content_tag_for :tr, company do %>
+        <td><%= link_to company.name, company %></td>
+        <td><%= (company.product_names.presence || ["No products yet."]).to_sentence %></td>
+        <td>
+          <%= link_to 'Edit', edit_company_path(company), class: 'btn small' %>
+          <%= link_to 'Delete', company, method: 'delete', class: 'btn danger small', confirm: 'Are you sure? Deleting the company will also permanently delete all products.' %>
+        </td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
