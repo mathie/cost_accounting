@@ -5,6 +5,7 @@ gem 'pg'
 
 gem 'foreman'
 gem 'thin'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'heroku', require: false
