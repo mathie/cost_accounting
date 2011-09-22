@@ -1,0 +1,62 @@
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li class="active"><%= link_to 'Stock Items', company_stock_items_path(@company) %></li>
+</ul>
+
+<h1><%= @company.name %> Stock Items</h1>
+
+<h2>Stock Items</h2>
+
+<p style="text-align:right">
+  <%= link_to 'New Stock Item', new_company_stock_item_path(@company), class: 'btn primary' %>
+</p>
+
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th style="text-align:center" colspan="3">Usage</th>
+      <th style="text-align:center" colspan="3">Lead Time</th>
+      <th colspan="5">&nbsp;</th>
+      <th style="text-align:center" colspan="2">Inventory Level</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th class="number">Min</th>
+      <th class="number">Avg</th>
+      <th class="number">Max</th>
+      <th class="number">Min</th>
+      <th class="number">Avg</th>
+      <th class="number">Max</th>
+      <th class="number">Buffer</th>
+      <th class="number">Order Cost</th>
+      <th class="number">Holding Cost</th>
+      <th class="number">Reorder Level</th>
+      <th class="number">Economic order quantity</th>
+      <th class="number">Min</th>
+      <th class="number">Max</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stock_items.each do |stock_item| %>
+      <%= content_tag_for :tr, stock_item do %>
+        <td><%= link_to stock_item.name, stock_item %></td>
+        <td class="number"><%= number_with_delimiter stock_item.minimum_usage %></td>
+        <td class="number"><%= number_with_delimiter stock_item.average_usage %></td>
+        <td class="number"><%= number_with_delimiter stock_item.maximum_usage %></td>
+        <td class="number"><%= number_with_delimiter stock_item.minimum_lead_time %></td>
+        <td class="number"><%= number_with_delimiter stock_item.average_lead_time %></td>
+        <td class="number"><%= number_with_delimiter stock_item.maximum_lead_time %></td>
+        <td class="number"><%= number_with_delimiter stock_item.buffer %></td>
+        <td class="number"><%= number_to_currency stock_item.order_cost %></td>
+        <td class="number"><%= number_to_currency stock_item.holding_cost %></td>
+        <td class="number"><%= number_with_delimiter stock_item.reorder_level %></td>
+        <td class="number"><%= number_with_delimiter stock_item.economic_order_quantity %></td>
+        <td class="number"><%= number_with_delimiter stock_item.minimum_inventory_level %></td>
+        <td class="number"><%= number_with_delimiter stock_item.maximum_inventory_level %></td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

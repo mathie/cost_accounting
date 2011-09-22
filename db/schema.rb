@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917151118) do
+ActiveRecord::Schema.define(:version => 20110922142238) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",       :null => false
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20110917151118) do
 
   add_index "products", ["company_id", "name"], :name => "index_products_on_company_id_and_name", :unique => true
   add_index "products", ["company_id"], :name => "index_products_on_company_id"
+
+  create_table "stock_items", :force => true do |t|
+    t.integer  "company_id",                                                        :null => false
+    t.string   "name",                                                              :null => false
+    t.decimal  "minimum_usage",     :precision => 16, :scale => 8, :default => 0.0, :null => false
+    t.decimal  "maximum_usage",     :precision => 16, :scale => 8,                  :null => false
+    t.decimal  "minimum_lead_time", :precision => 16, :scale => 8,                  :null => false
+    t.decimal  "maximum_lead_time", :precision => 16, :scale => 8,                  :null => false
+    t.decimal  "order_cost",        :precision => 16, :scale => 8,                  :null => false
+    t.decimal  "buffer",            :precision => 16, :scale => 8, :default => 0.0, :null => false
+    t.decimal  "holding_cost",      :precision => 16, :scale => 8,                  :null => false
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
+  end
+
+  add_index "stock_items", ["company_id", "name"], :name => "index_stock_items_on_company_id_and_name", :unique => true
+  add_index "stock_items", ["company_id"], :name => "index_stock_items_on_company_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -1,0 +1,27 @@
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li class="active"><%= link_to @company.name, @company %></li>
+</ul>
+
+<h1><%= @company.name %></h1>
+
+<p>Not a lot to see here, yet. Two things to go check out:</p>
+
+<ul>
+  <li>
+    <%= link_to 'Products', company_products_path(@company) %>
+    where you can calculate the profit you'll make from building some
+    products, based on direct and indirect costs.
+  </li>
+
+  <li>
+    <%= link_to 'Stock items', company_stock_items_path(@company) %>
+    where you'll be able to work out basic stock control for keeping the right
+    stock levels of your raw materials.
+  </li>
+</ul>
+
+<p>
+  Sadly these two things are not linked, in that you're not managing the stock
+  levels of raw materials that you use to create your products. Yet.
+</p>

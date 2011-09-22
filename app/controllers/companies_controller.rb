@@ -5,7 +5,6 @@ class CompaniesController < ApplicationController
 
   def show
     @company = current_user.companies.find(params[:id])
-    redirect_to company_products_path(@company)
   end
 
   def new

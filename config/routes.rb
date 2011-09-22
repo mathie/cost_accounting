@@ -3,6 +3,8 @@ CostAccounting::Application.routes.draw do
     resources :products do
       resources :fixed_direct_costs, :variable_direct_costs, :semi_variable_direct_costs
     end
+
+    resources :stock_items
   end
 
   devise_for :users

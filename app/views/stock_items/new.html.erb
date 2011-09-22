@@ -1,0 +1,24 @@
+<ul class="breadcrumb">
+  <li><%= link_to 'My Companies', companies_path %> <span class="separator">/</span></li>
+  <li><%= link_to @company.name, @company %> <span class="separator">/</span></li>
+  <li><%= link_to 'Stock Items', company_stock_items_path(@company) %> <span class="separator">/</span></li>
+  <li class="active"><%= link_to 'New stock item', new_company_stock_item_path(@company) %></li>
+</ul>
+
+<h1>New stock item for <%= @company.name %></h1>
+
+<%= form_for [@company, @stock_item] do |f| %>
+  <%= form_text_input f, :text_field, :name, label: 'Stock item name', autofocus: true, class: 'xlarge' %>
+  <%= form_text_input f, :text_field, :minimum_usage, hint: 'The minimum number of units you expect to consume in a single week.' %>
+  <%= form_text_input f, :text_field, :maximum_usage, hint: 'The maximum number of units you ever expect to consume in a week. Must be greater than the minimum number of units.' %>
+  <%= form_text_input f, :text_field, :minimum_lead_time, hint: 'The shortest anticipated time (in weeks) that it takes a supplier to fulfil an order.' %>
+  <%= form_text_input f, :text_field, :maximum_lead_time, hint: 'The longest anticipated time (in weeks) that it takes for a supplier to fulfil an order. Must be greater than the minimum lead time.' %>
+  <%= form_text_input f, :text_field, :buffer, hint: 'The additional buffer of stock you want to keep.' %>
+  <%= form_text_input f, :text_field, :order_cost, hint: 'The administrative overhead of placing a single order for stock.' %>
+  <%= form_text_input f, :text_field, :holding_cost, hint: 'This is the cost of holding one unit in stock for one year.' %>
+
+  <div class="actions">
+    <%= f.submit "Create stock item", class: 'btn primary' %>
+    <%= link_to 'Cancel', company_stock_items_path, class: 'btn' %>
+  </div>
+<% end %>

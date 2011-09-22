@@ -22,9 +22,4 @@ class ProductsController < ApplicationController
       render action: 'new'
     end
   end
-
-  private
-  def load_company!
-    @company = current_user.companies.find(params[:company_id])
-  end
 end
