@@ -1,4 +1,6 @@
-<%= ENV["RACK_ENV"] %>:
+development:
+  developer_mode: true
+production:
   error_collector:
     capture_source: true
     enabled: true
